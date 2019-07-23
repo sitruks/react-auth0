@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import {Route, withRouter} from 'react-router-dom';
 import auth0Client from './Auth';
 import NavBar from './NavBar/NavBar';
-import Question from './Question/Question';
-import Questions from './Questions/Questions';
+import Note from './Note/Note';
+import Notes from './Notes/Notes';
 import Callback from './Callback';
-import NewQuestion from './NewQuestion/NewQuestion';
+import NewNote from './NewNote/NewNote';
 import SecuredRoute from './SecuredRoute/SecuredRoute';
 
 class App extends Component {
@@ -34,11 +34,11 @@ class App extends Component {
     return (
       <div>
         <NavBar/>
-        <Route exact path='/' component={Questions}/>
-        <Route exact path='/question/:questionId' component={Question}/>
+        <Route exact path='/' component={Notes}/>
+        <Route exact path='/note/:noteId' component={Note}/>
         <Route exact path='/callback' component={Callback}/>
-        <SecuredRoute path='/new-question'
-                      component={NewQuestion}
+        <SecuredRoute path='/new-note'
+                      component={NewNote}
                       checkingSession={this.state.checkingSession} />
       </div>
     );

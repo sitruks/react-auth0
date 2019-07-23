@@ -3,7 +3,7 @@ import {withRouter} from 'react-router-dom';
 import auth0Client from '../Auth';
 import axios from 'axios';
 
-class NewQuestion extends Component {
+class NewNote extends Component {
   constructor(props) {
     super(props);
 
@@ -47,7 +47,7 @@ class NewQuestion extends Component {
         <div className="row">
           <div className="col-12">
             <div className="card border-primary">
-              <div className="card-header">New Question</div>
+              <div className="card-header">New Note</div>
               <div className="card-body text-left">
                 <div className="form-group">
                   <label htmlFor="exampleInputEmail1">Title:</label>
@@ -56,7 +56,7 @@ class NewQuestion extends Component {
                     type="text"
                     onBlur={(e) => {this.updateTitle(e.target.value)}}
                     className="form-control"
-                    placeholder="Give your question a title."
+                    placeholder="Give your note a title."
                   />
                 </div>
                 <div className="form-group">
@@ -66,7 +66,7 @@ class NewQuestion extends Component {
                     type="text"
                     onBlur={(e) => {this.updateDescription(e.target.value)}}
                     className="form-control"
-                    placeholder="Give more context to your question."
+                    placeholder="Give more context to your note."
                   />
                 </div>
                 <button
@@ -84,4 +84,4 @@ class NewQuestion extends Component {
   }
 }
 
-export default withRouter(NewQuestion);
+export default withRouter(NewNote);

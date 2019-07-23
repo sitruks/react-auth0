@@ -2,25 +2,25 @@ import React, {Component, Fragment} from 'react';
 import {withRouter} from 'react-router-dom';
 import auth0Client from '../Auth';
 
-class SubmitAnswer extends Component {
+class SubmitComment extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      answer: '',
+      comment: '',
     };
   }
 
-  updateAnswer(value) {
+  updateComment(value) {
     this.setState({
-      answer: value,
+      comment: value,
     });
   }
 
   submit() {
-    this.props.submitAnswer(this.state.answer);
+    this.props.submitComment(this.state.comment);
 
     this.setState({
-      answer: '',
+      comment: '',
     });
   }
 
@@ -29,13 +29,13 @@ class SubmitAnswer extends Component {
     return (
       <Fragment>
         <div className="form-group text-center">
-          <label htmlFor="exampleInputEmail1">Answer:</label>
+          <label htmlFor="exampleInputEmail1">Comment:</label>
           <input
             type="text"
-            onChange={(e) => {this.updateAnswer(e.target.value)}}
+            onChange={(e) => {this.updateComment(e.target.value)}}
             className="form-control"
-            placeholder="Share your answer."
-            value={this.state.answer}
+            placeholder="Share your comment."
+            value={this.state.comment}
           />
         </div>
         <button
@@ -49,4 +49,4 @@ class SubmitAnswer extends Component {
   }
 }
 
-export default withRouter(SubmitAnswer);
+export default withRouter(SubmitComment);

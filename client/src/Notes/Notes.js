@@ -2,19 +2,19 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
 
-class Questions extends Component {
+class Notes extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      questions: null,
+      notes: null,
     };
   }
 
   async componentDidMount() {
-    const questions = (await axios.get('http://localhost:8081/')).data;
+    const notes = (await axios.get('http://localhost:8081/')).data;
     this.setState({
-      questions,
+      notes,
     });
   }
 
@@ -22,25 +22,25 @@ class Questions extends Component {
     return (
       <div className="container">
         <div className="row">
-          <Link to="/new-question">
+          <Link to="/new-note">
             <div className="card text-white bg-secondary mb-3">
               <div className="card-header">Need help? Ask here!</div>
               <div className="card-body">
-                <h4 className="card-title">+ New Question</h4>
+                <h4 className="card-title">+ New Note</h4>
                 <p className="card-text">Don't worry. Help is on the way!</p>
               </div>
             </div>
           </Link>
-          {this.state.questions === null && <p>Loading questions...</p>}
+          {this.state.notes === null && <p>Loading notes...</p>}
           {
-            this.state.questions && this.state.questions.map(question => (
-              <div key={question.id} className="col-sm-12 col-md-4 col-lg-3">
-                <Link to={`/question/${question.id}`}>
+            this.state.notes && this.state.notes.map(note => (
+              <div key={note.id} className="col-sm-12 col-md-4 col-lg-3">
+                <Link to={`/note/${note.id}`}>
                   <div className="card text-white bg-success mb-3">
-                    <div className="card-header">Answers: {question.answers}</div>
+                    <div className="card-header">Responses: {note.comments}</div>
                     <div className="card-body">
-                      <h4 className="card-title">{question.title}</h4>
-                      <p className="card-text">{question.description}</p>
+                      <h4 className="card-title">{note.title}</h4>
+                      <p className="card-text">{note.description}</p>
                     </div>
                   </div>
                 </Link>
@@ -53,4 +53,4 @@ class Questions extends Component {
   }
 }
 
-export default Questions;
+export default Notes;
